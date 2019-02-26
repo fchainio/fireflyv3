@@ -1,5 +1,8 @@
 {
   "globalDevDependencies": {
-    "electron": "registry:dt/electron#1.4.8+20170316233216"
+    "electron": "registry:dt/electron#1.4.8+20170316233216",
+    "electron-builder": "registry:dt/electron-builder#2.0.2+20160510010627",
+    "electron-devtools-installer": "registry:dt/electron-devtools-installer#2.0.1+20161005184000",
+    "electron-packager": "registry:dt/electron-packager#5.1.0+20160510010627"
   }
 }
