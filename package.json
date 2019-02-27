@@ -1,31 +1,32 @@
 {
   "name": "fireflyv3",
-  "version": "0.1.0",
+  "version": "3.0.0beta",
   "private": true,
   "scripts": {
     "start": "./node_modules/.bin/react-native start",
     "start-clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && npm start -- --reset-cache",
-    "android": "cross-env platform=android ./node_modules/.bin/react-native run-android",
-    "ios": "cross-env platform=ios ./node_modules/.bin/react-native run-ios",
+    "android": "./node_modules/.bin/react-native run-android",
+    "ios": "./node_modules/.bin/react-native run-ios",
     "web": "cross-env platform=web node scripts/start.js",
-    "dev:electron": "cross-env platform=web node scripts/start.js",
     "build": "cross-env platform=web node scripts/build.js",
-    "test": "cross-env platform=web npm run test:web && npm run test:native",
+    "desktop": "cross-env platform=desktop node scripts/start.js",
+    "test": "npm run test:web && npm run test:native",
     "test:web-watch": "node scripts/test.js --watch --config \"./config/web.jest.config.js\"",
-    "test:web": "cross-env platform=web node scripts/test.js --config \"./config/web.jest.config.js\"",
+    "test:web": "node scripts/test.js --config \"./config/web.jest.config.js\"",
     "test:native": "node scripts/test.js --config \"./config/native.jest.config.js\"",
     "test:native-watch": "node scripts/test.js --watch --config \"./config/native.jest.config.js\"",
     "coverage": "node scripts/test.js --coverage --config \"./config/web.jest.config.js\"",
     "coverage:native": "node scripts/test.js --config \"./config/native.jest.config.js\" --coverage"
   },
   "dependencies": {
-    "native-base": "^2.11.0",
-    "react": "16.6.3",
+    "electron": "^4.0.6",
+    "react": "^16.6.x",
     "react-app-polyfill": "^0.1.3",
-    "react-art": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-native": "0.58.5",
-    "react-native-web": "^0.10.0"
+    "react-art": "^16.6.x",
+    "react-dom": "^16.6.x",
+    "react-native": "0.55.x",
+    "react-native-electron": "^0.10.0",
+    "react-native-web": "^0.9.x"
   },
   "devDependencies": {
     "@babel/core": "7.1.0",
@@ -39,16 +40,13 @@
     "babel-preset-react-app": "^6.1.0",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
-    "copy-webpack-plugin": "^5.0.0",
+    "chalk": "2.4.1",
     "cross-env": "^5.2.0",
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
-    "electron": "^4.0.5",
-    "electron-builder": "^20.38.5",
     "electron-debug": "^2.1.0",
     "electron-devtools-installer": "^2.2.4",
-    "electron-packager": "^13.1.0",
     "eslint": "5.6.0",
     "eslint-config-react-app": "^3.0.5",
     "eslint-loader": "2.1.1",
@@ -56,11 +54,10 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
-    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.1",
@@ -83,7 +80,6 @@
     "url-loader": "1.1.1",
     "webpack": "4.19.1",
     "webpack-dev-server": "3.1.9",
-    "webpack-hot-middleware": "^2.24.3",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
   },
@@ -95,39 +91,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "build": {
-    "productName": "fireflyv3",
-    "appId": "io.fchain.fireflyv3",
-    "directories": {
-      "output": "build"
-    },
-    "files": [
-      "dist/electron/**/*"
-    ],
-    "dmg": {
-      "contents": [
-        {
-          "x": 410,
-          "y": 150,
-          "type": "link",
-          "path": "/Applications"
-        },
-        {
-          "x": 130,
-          "y": 150,
-          "type": "file"
-        }
-      ]
-    },
-    "mac": {
-      "icon": "icons/icon.icns"
-    },
-    "win": {
-      "icon": "icons/icon.ico"
-    },
-    "linux": {
-      "icon": "icons"
-    }
-  }
+  ]
 }
