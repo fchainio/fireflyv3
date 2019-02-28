@@ -67,9 +67,9 @@ const resolveModule = (resolveFn, filePath) => {
 };
 
 let platform = process.env.platform;
-let appBuild = 'dist/web';
+let appBuild = 'build/web';
 if('desktop' === platform){
-  appBuild = 'dist/desktop';
+  appBuild = 'build/desktop';
 }
 
 // config after eject: we're in ./config/
