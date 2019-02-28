@@ -10,7 +10,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 let mainConfig = {
   mode: isDev ? 'development':'production',
   entry: {
-    main: path.join(__dirname, isDev ? '../src/maindev.desktop.js':'../src/main.desktop.js')
+    index: path.join(__dirname, isDev ? '../src/maindev.desktop.js':'../src/main.desktop.js')
   },
   externals: [
     ...Object.keys(dependencies || {})

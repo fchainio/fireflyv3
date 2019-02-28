@@ -106,7 +106,6 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   }
   return loaders;
 };
-
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
@@ -118,7 +117,7 @@ module.exports = {
   // You can exclude the *.map files from the build during deployment.
   devtool: shouldUseSourceMap ? 'source-map' : false,
   // In production, we only want to load the app code.
-  entry: [indexJs],
+  entry: indexJs,
   output: {
     // The build folder.
     path: paths.appBuild,

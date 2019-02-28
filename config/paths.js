@@ -67,17 +67,21 @@ const resolveModule = (resolveFn, filePath) => {
 };
 
 let platform = process.env.platform;
-let appBuild = 'dist';
+let appBuild = 'dist/web';
+if('desktop' === platform){
+  appBuild = 'dist/desktop';
+}
 
 // config after eject: we're in ./config/
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
-  appBuild: resolveApp('dist'),
+  appBuild: resolveApp(appBuild),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   desktopIndexJs: resolveModule(resolveApp, 'src/index.desktop'),
+  desktopMainJs: resolveModule(resolveApp, 'src/main.desktop'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),
