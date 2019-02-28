@@ -1,8 +1,8 @@
 
 'use strict';
-
+const path = require('path');
 const electron = require('electron');
-const {app, BrowserWindow, Menu, ipcMain, ipcRenderer} = electron;
+const {app, BrowserWindow, Menu, ipcMain, ipcRenderer, nativeImage, Tray} = electron;
 
 const winURL = process.env.NODE_ENV === 'development'
 ? `http://localhost:3000`
@@ -58,11 +58,37 @@ function createMainWnd() {
     mainWnd.on('closed', () => {
        mainWnd = null;
     });
+    // createTray();
 }
-
+// let tray;
+// function createTray(){
+//   // tray = new Tray('./icon.png');//系统托盘图标
+//    // tray = new Tray(path.join(__dirname, '../build/icons/icon.png'))
+//    let image = nativeImage.createFromPath(path.join(__static, 'tray.png'))
+//    tray = new Tray(image);
+//      const contextMenu = Menu.buildFromTemplate([ // 菜单项
+//        {label: 'Show', type: 'radio', click: () => {mainWnd.show()}},
+//        {label: 'Hide', type: 'radio', click: () => {mainWnd.hide()}},
+//        {label: 'Exit', type: 'normal', click: () => {app.quit()}},
+//      ])
+//      tray.setToolTip('value network in hand') // 鼠标放上时候的提示
+//      tray.setContextMenu(contextMenu) // 应用菜单项
+//  }
 
 app.on('ready', createMainWnd);
 
 app.on('window-all-closed', () => {
-    app.quit();
+    app.quit()
+});
+//小化
+ipcMain.on('hide-window', () => {
+  mainWnd.minimize();
+});
+//最大化
+ipcMain.on('show-window', () => {
+  mainWnd.maximize();
+});
+//还原
+ipcMain.on('orignal-window', () => {
+  mainWnd.unmaximize();
 });

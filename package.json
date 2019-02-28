@@ -10,10 +10,14 @@
     "ios": "./node_modules/.bin/react-native run-ios",
     "web": "cross-env platform=web NODE_ENV=development node scripts/start.js",
     "build": "cross-env platform=web NODE_ENV=production node scripts/build.js",
-    "desktop:renderer": "cross-env platform=desktop NODE_ENV=production node scripts/start.js",
-    "desktop:main":"electron ./src/maindev.desktop.js",
-
     "desktop": "cross-env platform=desktop NODE_ENV=development node scripts/startdesktop.js",
+    "desktop:darwin": "cross-env BUILD_TARGET=darwin BUILD_ARCH=x64 node scripts/build_desktop.js",
+    "desktop:linux": "cross-env BUILD_TARGET=linux BUILD_ARCH=x64 node scripts/build_desktop.js",
+    "desktop:linux32": "cross-env BUILD_TARGET=linux BUILD_ARCH=ia32 node scripts/build_desktop.js",
+    "desktop:mas": "cross-env BUILD_TARGET=mas node scripts/build_desktop.js",
+    "desktop:win32": "cross-env BUILD_TARGET=win32 BUILD_ARCH=ia32 node scripts/build_desktop.js",
+    "desktop:win64": "cross-env BUILD_TARGET=win32 BUILD_ARCH=x64 node scripts/build_desktop.js",
+    
     "test": "npm run test:web && npm run test:native",
     "test:web-watch": "node scripts/test.js --watch --config \"./config/web.jest.config.js\"",
     "test:web": "node scripts/test.js --config \"./config/web.jest.config.js\"",
