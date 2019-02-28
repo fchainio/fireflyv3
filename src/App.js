@@ -36,7 +36,7 @@ class App extends Component {
     return (
       <View style={styles.container}>
         <Animated.Image source={logo} style={[styles.logo, { transform: [{rotate: spin}] }]}/>
-        <Text style={styles.title}>Create React Native Web App</Text>
+        <Text style={styles.title}>Create React Native Electron App</Text>
         <Text>Open up src/App.js to start working on your app!</Text>
         <Text>Changes you make will automatically reload.</Text>
         {Platform.OS !== 'web' && <Text>Shake your phone to open the developer menu.</Text>}

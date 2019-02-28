@@ -18,6 +18,9 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
+process.env['NODE_ENV'] = 'development'
+process.env['BABEL_ENV'] = 'development'
+
 const isDesktop = process.env["platform"] === "desktop";
 let indexJs = isDesktop ? paths.desktopIndexJs : paths.appIndexJs;
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -79,6 +82,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 // The production configuration is different and lives in a separate file.
 module.exports = {
   mode: 'development',
+  watch: isDesktop,//desktop模式会生成相应的文件
   // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
   // See the discussion in https://github.com/facebook/create-react-app/issues/343
   devtool: 'cheap-module-source-map',
@@ -116,6 +120,7 @@ module.exports = {
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
+    path: path.resolve(__dirname, isDesktop ? '../dist/desktop':'../dist')
   },
   optimization: {
     // Automatically split vendor and commons
