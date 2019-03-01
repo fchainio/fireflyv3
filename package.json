@@ -90,16 +90,16 @@
     "react-dev-utils": "^7.0.1-next.6a95aae9",
     "react-hot-loader": "^4.6.3",
     "react-test-renderer": "^16.6.3",
-    "resolve": "1.8.1",
-    "sass-loader": "7.1.0",
-    "style-loader": "0.23.0",
-    "terser-webpack-plugin": "1.1.0",
-    "url-loader": "1.1.1",
-    "webpack": "4.19.1",
-    "webpack-dev-server": "3.1.9",
+    "resolve": "^1.8.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "terser-webpack-plugin": "^1.1.0",
+    "url-loader": "^1.1.1",
+    "webpack": "^4.19.1",
+    "webpack-dev-server": "^3.1.9",
     "webpack-hot-middleware": "^2.24.3",
-    "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "3.6.3"
+    "webpack-manifest-plugin": "^2.0.4",
+    "workbox-webpack-plugin": "^3.6.3"
   },
   "eslintConfig": {
     "extends": "react-app"
