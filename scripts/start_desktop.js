@@ -133,7 +133,7 @@ function startElectron () {
   
   console.log('--------------electron-----------');
 
-  electronProcess = spawn(electron, ['--inspect=5858', '.'])
+  electronProcess = spawn(electron, ['--inspect=5858','.'])
 
   electronProcess.stdout.on('data', data => {
     electronLog(data, 'blue')
