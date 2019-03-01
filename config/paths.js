@@ -81,7 +81,7 @@ module.exports = {
   appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
   desktopIndexJs: resolveModule(resolveApp, 'src/index.desktop'),
-  desktopMainJs: resolveModule(resolveApp, 'src/main.desktop'),
+  desktopMainJs: resolveModule(resolveApp, 'src/desktop/main.desktop'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),

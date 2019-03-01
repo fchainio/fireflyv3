@@ -18,6 +18,7 @@
     "desktop:mas": "cross-env platform=desktop  BUILD_TARGET=mas node scripts/build_desktop.js",
     "desktop:win32": "cross-env platform=desktop  BUILD_TARGET=win32 BUILD_ARCH=ia32 node scripts/build_desktop.js",
     "desktop:win64": "cross-env platform=desktop  BUILD_TARGET=win32 BUILD_ARCH=x64 node scripts/build_desktop.js",
+    "desktopt":"electron ./build/desktop/main.js",
     "test": "npm run test:web && npm run test:native",
     "test:web-watch": "node scripts/test.js --watch --config \"./config/web.jest.config.js\"",
     "test:web": "node scripts/test.js --config \"./config/web.jest.config.js\"",

@@ -15,7 +15,7 @@ process.on('unhandledRejection', err => {
 
 // Ensure environment variables are read.
 require('../config/env');
-
+const fs = require('fs-extra');
 const del = require('del');
 const chalk = require('chalk');
 const webpack = require('webpack');
@@ -23,7 +23,7 @@ const mainConfig = require('../config/webpack.config.desktopmain');
 const rendererConfig = require('../config/webpack.config.prod');
 const paths = require('../config/paths');
 const buildConfig = require('../config/electron.config');
-
+const path = require('path');
 const isInteractive = process.stdout.isTTY;
 
 const packager = require('electron-packager')
@@ -46,7 +46,7 @@ function clean () {
 function build () {
   greeting()
 
-  del.sync(['dist/desktop/*', '!.gitkeep'])
+  del.sync(['dist/*', '!.gitkeep'])
 
   const tasks = ['main', 'renderer']
   const m = new Multispinner(tasks, {
@@ -60,6 +60,7 @@ function build () {
     process.stdout.write('\x1B[2J\x1B[0f')
     console.log(`\n\n${results}`)
     console.log(`${okayLog}take it away ${chalk.yellow('`electron-builder`')}\n`)
+    copyFiles();
     bundleApp()
   })
 
@@ -134,3 +135,14 @@ function greeting () {
 }
 
 
+
+function copyFiles() {
+  let pkgFile = path.resolve(__dirname,'../src/desktop/package.json');
+  let destPkgFile = path.resolve(__dirname, '../build/desktop/package.json');
+  try{
+    fs.copySync(pkgFile, destPkgFile);
+  }catch(e){
+    console.error(e);
+    process.exit(1);
+  }
+}
