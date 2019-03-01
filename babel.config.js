@@ -1,5 +1,5 @@
 let ignore = [];
-let plugins = [];
+let plugins = ['@babel/plugin-proposal-class-properties'];
 let presets = ["module:metro-react-native-babel-preset"];
 
 if (process.env["platform"] === "web") {
@@ -19,6 +19,8 @@ if (process.env["platform"] === "desktop") {
     }
   }]);
 }
+
+
 
 module.exports = function(api){
   api.cache(true);

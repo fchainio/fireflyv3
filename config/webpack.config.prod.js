@@ -224,6 +224,7 @@ module.exports = {
       .map(ext => `.${ext}`)
       .filter(ext => useTypeScript || !ext.includes('ts')),
     alias: {
+      "react-native/Libraries/Renderer/shims/ReactNativePropRegistry": "react-native-web/dist/modules/ReactNativePropRegistry",
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': isDesktop ? 'react-native-electron':'react-native-web',
@@ -289,8 +290,10 @@ module.exports = {
           // The preset includes JSX, Flow, TypeScript and some ESnext features.
           {
             test: /\.(js|mjs|jsx|ts|tsx)$/,
-            include: paths.appSrc,
-
+            include: [
+              paths.appSrc,
+              ...paths.appDependentModules
+            ],
             loader: require.resolve('babel-loader'),
             options: {
               customize: require.resolve(
@@ -298,6 +301,7 @@ module.exports = {
               ),
               
               plugins: [
+                '@babel/plugin-proposal-class-properties',
                 [
                   require.resolve('babel-plugin-named-asset-import'),
                   {
@@ -334,6 +338,7 @@ module.exports = {
               cacheDirectory: true,
               // Save disk space when time isn't as important
               cacheCompression: true,
+              plugins: ['@babel/plugin-proposal-class-properties'],
               
               // If an error happens in a package, it's possible to be
               // because it was compiled. Thus, we don't want the browser

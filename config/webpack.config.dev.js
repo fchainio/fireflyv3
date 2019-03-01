@@ -153,6 +153,7 @@ module.exports = {
       .map(ext => `.${ext}`)
       .filter(ext => useTypeScript || !ext.includes('ts')),
     alias: {
+      "react-native/Libraries/Renderer/shims/ReactNativePropRegistry": "react-native-web/dist/modules/ReactNativePropRegistry",
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': isDesktop ? 'react-native-electron':'react-native-web',
@@ -219,7 +220,10 @@ module.exports = {
           // The preset includes JSX, Flow, and some ESnext features.
           {
             test: /\.(js|mjs|jsx|ts|tsx)$/,
-            include: paths.appSrc,
+            include: [
+              paths.appSrc,
+              ...paths.appDependentModules
+            ],
             loader: require.resolve('babel-loader'),
             options: {
               customize: require.resolve(
@@ -227,6 +231,7 @@ module.exports = {
               ),
 
               plugins: [
+                
                 [
                   require.resolve('babel-plugin-named-asset-import'),
                   {
@@ -238,6 +243,7 @@ module.exports = {
                   },
                 ],
                 'react-hot-loader/babel',
+                '@babel/plugin-proposal-class-properties'
               ],
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/

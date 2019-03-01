@@ -91,6 +91,19 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  appDependentModules: [
+    resolveApp("node_modules/native-base-shoutem-theme"),
+    resolveApp("node_modules/react-navigation"),
+    resolveApp("node_modules/react-native-easy-grid"),
+    resolveApp("node_modules/react-native-drawer"),
+    resolveApp("node_modules/react-native-safe-area-view"),
+    resolveApp("node_modules/react-native-vector-icons"),
+    resolveApp("node_modules/react-native-keyboard-aware-scroll-view"),
+    resolveApp("node_modules/react-native-web"),
+    resolveApp("node_modules/react-native-tab-view"),
+    resolveApp("node_modules/static-container")// ,
+    // resolveApp("node_modules/react-native-iphone-x-helper")
+  ]
 };
 
 

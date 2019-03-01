@@ -1,6 +1,7 @@
 {
   "globalDependencies": {
-    "electron": "registry:dt/electron#1.4.8+20170316233216"
+    "electron": "registry:dt/electron#1.4.8+20170316233216",
+    "redux": "registry:dt/redux#3.5.2+20160703092728"
   },
   "globalDevDependencies": {
     "electron-devtools-installer": "registry:dt/electron-devtools-installer#2.0.1+20161005184000",

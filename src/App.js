@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
   Platform,
   TouchableHighlight,
   Animated,
   Easing,
 } from 'react-native';
+import { Button, Text } from 'native-base';
 import logo from './logo.png';
 
 class App extends Component {
   state = {
     spinValue: new Animated.Value(0),
+    isFalse: false,
   }
 
   onClick = () => {
@@ -32,21 +33,18 @@ class App extends Component {
       inputRange: [0, 1],
       outputRange: ['0deg', '360deg']
     });
+    let dfalse = this.state.isFalse;
 
     return (
       <View style={styles.container}>
         <Animated.Image source={logo} style={[styles.logo, { transform: [{rotate: spin}] }]}/>
-        <Text style={styles.title}>Create React Native Electron App</Text>
-        <Text>Open up src/App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
+        <Text uppercase={dfalse} style={styles.title}>Create React Native Electron App</Text>
+        <Text uppercase={dfalse}>Open up src/App.js to start working on your app!</Text>
+        <Text uppercase={dfalse}>Changes you make will automatically reload.</Text>
         {Platform.OS !== 'web' && <Text>Shake your phone to open the developer menu.</Text>}
-        <TouchableHighlight
-          onPress={this.onClick}
-          style={styles.button}
-          underlayColor={'#0A84D0'}
-        >
-          <Text style={styles.buttonText}>Rotate Logo</Text>
-        </TouchableHighlight>
+        <Button primary onPress={this.onClick}>
+          <Text uppercase={dfalse} >Rotate Logo</Text>
+        </Button>
       </View>
     );
   }
